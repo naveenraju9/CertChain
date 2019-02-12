@@ -1,6 +1,6 @@
 const Crypto = require('crypto');
 
-const BrewChain = function() {
+const CertChain = function() {
 	let chain = [];
 	let currentBlock = {};
 	let genesisBlock = {};
@@ -136,4 +136,4 @@ const BrewChain = function() {
 	};
 };
 
-module.exports = BrewChain;
+module.exports = CertChain;

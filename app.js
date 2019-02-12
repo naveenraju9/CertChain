@@ -1,10 +1,10 @@
 const express = require('express');
 const bodyParser = require('body-parser');
-const BrewNode = require('./brewNode'); 
+const CertNode = require('./CertNode'); 
 
 const port = 18070+Math.floor(Math.random()*30);
 console.log('starting node on ', port)
-let node1 = new BrewNode(port);
+let node1 = new CertNode(port);
 
 node1.init();
 

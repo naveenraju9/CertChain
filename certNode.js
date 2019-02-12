@@ -1,11 +1,11 @@
-const BrewChain = require('./brewChain');
+const CertChain = require('./CertChain');
 const WebSocket = require('ws');
 
-const BrewNode = function(port){
-    let brewSockets = [];
+const CertNode = function(port){
+    let certSockets = [];
     let brewServer;
     let _port = port
-    let chain = new BrewChain();
+    let chain = new CertChain();
 
     const REQUEST_CHAIN = "REQUEST_CHAIN";
     const REQUEST_BLOCK = "REQUEST_BLOCK";
@@ -86,12 +86,12 @@ const BrewNode = function(port){
     }
 
     const broadcastMessage = (event, message) => {
-        brewSockets.forEach(node => node.send(JSON.stringify({ event, message})))
+        certSockets.forEach(node => node.send(JSON.stringify({ event, message})))
     }
 
     const closeConnection = (connection) => {
         console.log('closing connection');
-        brewSockets.splice(brewSockets.indexOf(connection),1);
+        certSockets.splice(certSockets.indexOf(connection),1);
     }
 
     const initConnection = (connection) => {
@@ -101,7 +101,7 @@ const BrewNode = function(port){
         
         requestLatestBlock(connection);
 
-        brewSockets.push(connection);
+        certSockets.push(connection);
 
         connection.on('error', () => closeConnection(connection));
         connection.on('close', () => closeConnection(connection));
@@ -143,4 +143,4 @@ const BrewNode = function(port){
 
 }
 
-module.exports = BrewNode;
+module.exports = CertNode;
