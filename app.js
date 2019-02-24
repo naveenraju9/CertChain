@@ -15,6 +15,15 @@ let BrewHTTP = function (){
 	app.use(express.static( 'public'));
 	app.use(bodyParser.json());
 
+	app.get('/', function(req, res) {
+		res.sendFile(path.join(__dirname + '/index.html'));
+	});
+	app.get('/addNode', function(req, res) {
+		res.sendFile(path.join(__dirname + '/public/addNode.html'));
+	});
+	app.get('/getChain', function (req, res) {
+		
+	})
 	app.get('/addNode/:port', (req, res)=>{
 		console.log('add host: '+req.params.port)
 		node1.addPeer('localhost', req.params.port)
@@ -27,9 +36,7 @@ let BrewHTTP = function (){
 		console.log('block created');
 		res.send();
 	})
-	app.get('/', function(req, res) {
-		res.sendFile(path.join(__dirname + '/index.html'));
-	});
+
 	
 	app.listen(http_port, () => {
 		console.log(`http server up.. ${http_port}`);
