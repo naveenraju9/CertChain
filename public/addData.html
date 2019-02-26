@@ -12,7 +12,7 @@
 </head>
 <body>
   <nav class="teal lighten-1" role="navigation">
-    <div class="nav-wrapper container"><a id="logo-container" href="#" class="brand-logo"><i class="large material-icons">merge_type</i>CertChain</a>
+    <div class="nav-wrapper container"><a id="logo-container" href="/index.html" class="brand-logo"><i class="large material-icons">merge_type</i>CertChain</a>
       <ul class="right hide-on-med-and-down">
         <li><a href="/getChain"><i class="material-icons left">grain</i>Blockchain</a></li>
         <li><a href="/addNode"><i class="material-icons left">person_add</i>AddNode</a></li>
@@ -21,57 +21,29 @@
       </ul>
     </div>
   </nav>
-  <div class="section no-pad-bot" id="index-banner">
+  <body>
     <div class="container">
-      <br><br>
-      <h1 class="header center black-text">A 21st century's decentralized certificate distribution platform</h1>
-      <div class="row center">
-        <h5 class="header col s12 light">A purely transparent, tamper proof and distributed blockchain network </h5>
-      </div>
-      <div class="row center">
-        <a href="#" id="download-button" class="btn-large waves-effect waves-light teal pulse">Get Started</a>
-      </div>
-      <br><br>
-
-    </div>
-  </div>
-  <div class="container">
-    <div class="section">
-
-      <!--   Icon Section   -->
+        <br><br>
+  <div class="row">
+    <form class="col s12 m4 l8 center">
       <div class="row">
-        <div class="col s12 m4">
-          <div class="icon-block">
-            <h2 class="center teal-text"><i class="material-icons pulse">flash_on</i></h2>
-            <h5 class="center">Unified platform</h5>
-
-            <p class="light">No more confusion!, A single platform for universities to distribute their certificates.</p>
-          </div>
+        <div class="input-field col s12">
+          <i class="material-icons prefix">settings_remote</i>
+          <input disabled value="Temporarily Disabled" id="disabled" type="text" class="validate">
+          <label for="disabled">IP Disabled</label>
         </div>
-
-        <div class="col s12 m4">
-          <div class="icon-block">
-            <h2 class="center teal-text"><i class="material-icons">group</i></h2>
-            <h5 class="center">Distrinbuted Power</h5>
-
-            <p class="light">Say Good Bye to server Crashes!, By utilizing our platform you can bring the distributed computing power.</p>
+        <div class="input-field col s12">
+            <i class="material-icons prefix">shuffle</i>
+            <input id="icon_prefix" type="text" class="validate">
+            <label for="icon_prefix">PORT</label>
           </div>
-        </div>
-
-        <div class="col s12 m4">
-          <div class="icon-block">
-            <h2 class="center teal-text"><i class="material-icons">verified_user</i></h2>
-            <h5 class="center">Easy to Validate</h5>
-
-            <p class="light">Don't worry about the genuinity of certificates, A single stop destination for verifying certificates.</p>
-          </div>
-        </div>
       </div>
-
-    </div>
-    <br><br>
+      <button id="submit" class="btn waves-effect waves-teal btn-large center" type="submit" name="action"><i class="material-icons right">person_add</i>Submit
+        </button>
+    </form>
   </div>
-
+</div>
+</body>
   <footer class="page-footer teal">
     <div class="container">
       <div class="row">
