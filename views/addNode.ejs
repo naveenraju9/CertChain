@@ -6,9 +6,9 @@
 <body>
   <% include ./partials/header %>
     <div class="container">
-        <br><br>
-  <div class="row">
-    <form class="col s12 m4 l8 center">
+        <br><br><br><br><br>
+  <div class="row halign-wrapper">
+    <form class="col s12 m4 l8 center" method="POST">
       <div class="row">
         <div class="input-field col s12">
           <i class="material-icons prefix">settings_remote</i>
@@ -17,16 +17,16 @@
         </div>
         <div class="input-field col s12">
             <i class="material-icons prefix">shuffle</i>
-            <input id="icon_prefix" type="text" class="validate">
+            <input id="icon_prefix port" name="port" type="text" class="validate">
             <label for="icon_prefix">PORT</label>
           </div>
       </div>
-      <button id="submit" class="btn waves-effect waves-teal btn-large center" type="submit" name="action"><i class="material-icons right">person_add</i>Submit
+      <button id="submit" class="btn waves-effect waves-teal btn-large center modal-trigger" type="submit" name="action" onclick="M.toast({html: 'Bingo! Node Added Successfully!'}, 5000)"><i class="material-icons right">person_add</i>Submit
         </button>
     </form>
   </div>
 </div>
-
+<br><br><br><br><br><br><br><br><br><br><br>
 <% include ./partials/footer %>
 
   </body>

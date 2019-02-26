@@ -20,7 +20,6 @@ let BlockchainSchema = new Schema({
     previousHash: {type:String},
     nounce: {type:Number},
     Hash: {type:String}
-
 });
 var BlockchainDataBase = mongoose.model('blockchain', BlockchainSchema);
 module.exports = BlockchainDataBase;

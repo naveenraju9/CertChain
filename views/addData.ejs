@@ -6,27 +6,76 @@
 <body>
   <% include ./partials/header %>
     <div class="container">
-        <br><br>
-  <div class="row">
-    <form class="col s12 m4 l8 center">
-      <div class="row">
-        <div class="input-field col s12">
-          <i class="material-icons prefix">settings_remote</i>
-          <input disabled value="Temporarily Disabled" id="disabled" type="text" class="validate">
-          <label for="disabled">IP Disabled</label>
-        </div>
-        <div class="input-field col s12">
-            <i class="material-icons prefix">shuffle</i>
-            <input id="icon_prefix" type="text" class="validate">
-            <label for="icon_prefix">PORT</label>
-          </div>
+      <br><br>
+      <div class="row align-center">
+        <h3>Please enter the certificate details</h3>
       </div>
-      <button id="submit" class="btn waves-effect waves-teal btn-large center" type="submit" name="action"><i class="material-icons right">person_add</i>Submit
-        </button>
-    </form>
-  </div>
-</div>
-<% include ./partials/footer %>
-
+      <div class="row">
+        <form class="col s12">
+          <div class="row">
+            <div class="input-field col s12">
+              <input placeholder="Enter Student Name:" id="first_name" type="text" class="validate">
+              <label for="first_name">Student Name:</label>
+            </div>
+          </div>
+            <div class="row">
+            <div class="input-field col s6">
+              <input placeholder="Enter Certificate ID" id="first_name" type="text" class="validate">
+              <label for="first_name">CertificateID:</label>
+            </div>
+              <div class="input-field col s6">
+              <input placeholder="Enter date of birth"  type="text" class="datepicker" id="dateofbirth">
+              <label for="dateofbith">Date Of Birth</label>
+              </div>
+            </div>
+            <div class="row">
+            <div class="input-field col s6">
+              <input placeholder="Enter Roll No" id="first_name" type="text" class="validate">
+              <label for="first_name">PIN:</label>
+            </div>
+        
+            <div class="input-field col s6">
+              <input placeholder="Date Of Issue" id="first_name" type="text" class="validate">
+              <label for="first_name">Date of Issue:</label>
+            </div>
+        </div>
+        <table>
+            <thead>
+              <tr>
+                  <th>Subject</th>
+                  <th>Marks</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td>Cloud Computing</td>
+                <td>
+                    <input placeholder="Enter Marks" id="marks" type="text" class="validate">
+                </td>
+              </tr>
+              <tr>
+                <td>Management Science</td>
+                <td><input placeholder="Enter Marks" id="marks" type="text" class="validate">
+                </td>
+              </tr>
+              <tr>
+                <td>HCI</td>
+                <td><input placeholder="Enter Marks" id="marks" type="text" class="validate"></td>
+              </tr>
+              <tr>
+                  <td>DS</td>
+                  <td><input placeholder="Enter Marks" id="marks" type="text" class="validate"></td>
+                </tr>
+            </tbody>
+          </table>
+        </form>
+      </div>
+      </div>
+    <% include ./partials/footer %>
+  <script>
+    $(document).ready(function(){
+    $('.datepicker').datepicker();
+  });
+  </script>
   </body>
 </html>

@@ -14,19 +14,22 @@ const CertChain = function() {
 				certificateID:0,
 				name: 'naveen',
 				dob: '27-10-1998',
+				PIN: '16L35A0511',
 				dateOfIssue: '10-04-2019',
 				marks:[
-					{loudComputing: 80},
+					{cloudComputing: 80},
 					{managementScience: 80},
 					{humanComputerInteraction:80},
 					{distributedSystems:80}
 				],
-				previousHash: 'thisisademohashforgenesisblock'
+				hash: 'thisisademohashforgenesisblock',
+				previousHash: -1
 			},
 			{
 				certificateID:1,
 				name: 'hemalatha',
 				dob: '27-10-1998',
+				PIN: '15L31A05L4',
 				dateOfIssue: '10-04-2019',
 				marks:[
 					{loudComputing: 80},
@@ -39,6 +42,7 @@ const CertChain = function() {
 				certificateID:2,
 				name: 'nookesh',
 				dob: '27-10-1998',
+				PIN: '16L35A0512',
 				dateOfIssue: '10-04-2019',
 				marks:[
 					{loudComputing: 80},
@@ -51,6 +55,7 @@ const CertChain = function() {
 				certificateID:3,
 				name: 'chinnikrishna',
 				dob: '27-10-1998',
+				PIN: '15L31A05K2',
 				dateOfIssue: '10-04-2019',
 				marks:[
 					{loudComputing: 80},
@@ -65,7 +70,7 @@ const CertChain = function() {
 
 		genesisBlock.hash = createHash(genesisBlock);
 		for(var i=1;i<genesisBlock.data.length;i++){
-			genesisBlock.data[i].hash = Crypto.createHash('SHA256').update(genesisBlock.data[i].name+genesisBlock.data[i].dob+genesisBlock.data[i].certificateID+genesisBlock.data[i].dateOfIssue+genesisBlock.data[i].marks).digest('hex');
+			genesisBlock.data[i].hash = Crypto.createHash('SHA256').update(genesisBlock.data[i].name+genesisBlock.data[i].dob+genesisBlock.data[i].certificateID+genesisBlock.data[i].dateOfIssue+genesisBlock.data[i].PIN+genesisBlock.data[i].marks).digest('hex');
 			genesisBlock.data[i].previousHash = genesisBlock.data[i-1].hash;
 		}
 		chain.push(genesisBlock);
@@ -90,7 +95,8 @@ const CertChain = function() {
 
 	function createBlock(data){
 		let newBlock = {
-		    timestamp: new Date().getTime()
+			index: currentBlock.index+1
+			, timestamp: new Date().getTime()
 		  , data: data
 		  , index: currentBlock.index+1
 		  , previousHash: currentBlock.hash

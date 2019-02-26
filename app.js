@@ -14,6 +14,9 @@ let BrewHTTP = function (){
 	const app = new express();
 	app.use(express.static( './public'));
 	app.use(bodyParser.json());
+	app.use(bodyParser.urlencoded({  
+		extended: true
+	  })); 
 	app.set('view engine', 'ejs');
 	app.get('/', function(req, res) {
 		res.render('index');
@@ -27,19 +30,11 @@ let BrewHTTP = function (){
 	app.get('/getChain', function (req, res) {
 		
 	})
-	app.get('/addNode/:port', (req, res)=>{
-		console.log('add host: '+req.params.port)
-		node1.addPeer('localhost', req.params.port)
-
-		res.send();
+	app.post('/addNode', (req, res)=>{
+		var nodePort = req.body.port;
+		console.log('add host: '+nodePort)
+		node1.addPeer('localhost', nodePort);
 	})
-
-	app.get('/addData/:teammember', (req, res)=>{
-		let newBlock = node1.createBlock(req.params.teammember);
-		console.log('block created');
-		res.send();
-	})
-
 	
 	app.listen(http_port, () => {
 		console.log(`http server up.. ${http_port}`);
