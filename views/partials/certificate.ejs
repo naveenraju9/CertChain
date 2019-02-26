@@ -1,0 +1,79 @@
+<br><br>
+<div class="row align-center">
+    <h3>Next certificate details</h3>
+</div>
+<div class="row">
+    <form class="col s12">
+        <div class="row">
+            <div class="input-field col s12">
+                <input placeholder="Enter Student Name:" id="first_name" type="text" class="validate">
+                <label for="first_name">Student Name:</label>
+            </div>
+        </div>
+        <div class="row">
+            <div class="input-field col s6">
+                <input placeholder="Enter Certificate ID" id="first_name" type="text" class="validate">
+                <label for="first_name">CertificateID:</label>
+            </div>
+            <div class="input-field col s6">
+                <input placeholder="Enter date of birth" type="text" class="datepicker" id="dateofbirth">
+                <label for="dateofbith">Date Of Birth</label>
+            </div>
+        </div>
+        <div class="row">
+            <div class="input-field col s6">
+                <input placeholder="Enter Roll No" id="first_name" type="text" class="validate">
+                <label for="first_name">PIN:</label>
+            </div>
+
+            <div class="input-field col s6">
+                <input placeholder="Date Of Issue" id="first_name" type="text" class="validate">
+                <label for="first_name">Date of Issue:</label>
+            </div>
+        </div>
+        <table>
+            <thead>
+                <tr>
+                    <th>Subject</th>
+                    <th>Marks</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>
+                        <input placeholder='Enter Subject' id='marks' type='text' name=subjects[] class='validate'>
+                    </td>
+                    <td>
+                        <input placeholder='Enter Marks' id='marks' type='text' name=marks[] class='validate'>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+        <div class="center-align">
+            <a class="btn-floating btn-large waves-effect waves-light teal addmore" id="addSub"><i
+                    class="material-icons">add</i></a>
+        </div>
+        <br>
+        <div class="center-align">
+            <button class="btn waves-effect waves-light btn-large" type="submit" name="action">Submit
+                <i class="material-icons right">send</i>
+            </button>
+        </div>
+
+    </form>
+</div>
+<br><br>
+<script>
+    $(document).ready(function () {
+        $('.datepicker').datepicker();
+    });
+    var i = 0;
+    $("#addSub").on('click', function () {
+        var data = "<tr><td><input placeholder='Enter Subject' id='subjects" + i + "'type='text' name=subjects[] class='validate'></td><td><input placeholder='Enter Marks' id='marks" + i + "' type='text' name=marks[] class='validate'></td></tr>";
+        $('table').append(data);
+        i++;
+        if (i == 10) {
+            $('#addSub').attr('disabled', true);
+        }
+    });
+</script>

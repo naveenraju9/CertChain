@@ -24,17 +24,24 @@ let BrewHTTP = function (){
 	app.get('/addNode', function(req, res) {
 		res.render('addNode');
 	});
-	app.get('/addData', function(req, res) {
-		res.render('addData');
-	});
-	app.get('/getChain', function (req, res) {
-		
-	})
 	app.post('/addNode', (req, res)=>{
 		var nodePort = req.body.port;
 		console.log('add host: '+nodePort)
 		node1.addPeer('localhost', nodePort);
-	})
+	});
+	app.get('/addData', function(req, res) {
+		res.render('addData');
+	});
+	app.get('/addData/:data', (req, res)=>{
+		let newBlock = node1.createBlock(req.params.data);
+		console.log('block created');
+		res.send();
+	});
+
+	app.get('/getChain', function (req, res) {
+		
+	});
+
 	
 	app.listen(http_port, () => {
 		console.log(`http server up.. ${http_port}`);

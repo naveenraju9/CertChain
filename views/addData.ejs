@@ -1,81 +1,37 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
   <% include ./partials/head %>
 </head>
+
 <body>
   <% include ./partials/header %>
-    <div class="container">
+
+  <div class="container">
+    <% include ./partials/certificate %>
+    <div class="center-align">
+      <a class="waves-effect waves-light btn-large"><i class="material-icons right">person_add</i>Add Another Certificate</a>
       <br><br>
-      <div class="row align-center">
-        <h3>Please enter the certificate details</h3>
-      </div>
-      <div class="row">
-        <form class="col s12">
-          <div class="row">
-            <div class="input-field col s12">
-              <input placeholder="Enter Student Name:" id="first_name" type="text" class="validate">
-              <label for="first_name">Student Name:</label>
-            </div>
-          </div>
-            <div class="row">
-            <div class="input-field col s6">
-              <input placeholder="Enter Certificate ID" id="first_name" type="text" class="validate">
-              <label for="first_name">CertificateID:</label>
-            </div>
-              <div class="input-field col s6">
-              <input placeholder="Enter date of birth"  type="text" class="datepicker" id="dateofbirth">
-              <label for="dateofbith">Date Of Birth</label>
-              </div>
-            </div>
-            <div class="row">
-            <div class="input-field col s6">
-              <input placeholder="Enter Roll No" id="first_name" type="text" class="validate">
-              <label for="first_name">PIN:</label>
-            </div>
-        
-            <div class="input-field col s6">
-              <input placeholder="Date Of Issue" id="first_name" type="text" class="validate">
-              <label for="first_name">Date of Issue:</label>
-            </div>
-        </div>
-        <table>
-            <thead>
-              <tr>
-                  <th>Subject</th>
-                  <th>Marks</th>
-              </tr>
-            </thead>
-            <tbody>
-              <tr>
-                <td>Cloud Computing</td>
-                <td>
-                    <input placeholder="Enter Marks" id="marks" type="text" class="validate">
-                </td>
-              </tr>
-              <tr>
-                <td>Management Science</td>
-                <td><input placeholder="Enter Marks" id="marks" type="text" class="validate">
-                </td>
-              </tr>
-              <tr>
-                <td>HCI</td>
-                <td><input placeholder="Enter Marks" id="marks" type="text" class="validate"></td>
-              </tr>
-              <tr>
-                  <td>DS</td>
-                  <td><input placeholder="Enter Marks" id="marks" type="text" class="validate"></td>
-                </tr>
-            </tbody>
-          </table>
-        </form>
-      </div>
-      </div>
-    <% include ./partials/footer %>
+    </div>
+  </div>
+
+
+  <% include ./partials/footer %>
   <script>
-    $(document).ready(function(){
-    $('.datepicker').datepicker();
-  });
+    $(document).ready(function () {
+      $('.datepicker').datepicker();
+    });
+    var i = 0;
+    $("#addSub").on('click', function () {
+      var data = "<tr><td><input placeholder='Enter Subject' id='subjects" + i + "'type='text' name=subjects[] class='validate'></td><td><input placeholder='Enter Marks' id='marks" + i + "' type='text' name=marks[] class='validate'></td></tr>";
+      $('table').append(data);
+      i++;
+      if (i == 10) {
+        $('#addSub').attr('disabled', true);
+      }
+    });
   </script>
-  </body>
+</body>
+
 </html>
