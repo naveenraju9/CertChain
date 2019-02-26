@@ -21,3 +21,5 @@ let BlockchainSchema = new Schema({
     Hash: {type:String}
 
 });
+var BlockchainDataBase = mongoose.model('blockchain', BlockchainSchema);
+module.exports = BlockchainDataBase;

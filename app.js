@@ -12,14 +12,17 @@ const http_port = 3000+Math.floor(Math.random()*10);
 
 let BrewHTTP = function (){
 	const app = new express();
-	app.use(express.static( 'public'));
+	app.use(express.static( './public'));
 	app.use(bodyParser.json());
-
+	app.set('view engine', 'ejs');
 	app.get('/', function(req, res) {
-		res.sendFile(path.join(__dirname + '/index.html'));
+		res.render('index');
 	});
 	app.get('/addNode', function(req, res) {
-		res.sendFile(path.join(__dirname + '/public/addNode.html'));
+		res.render('addNode');
+	});
+	app.get('/addData', function(req, res) {
+		res.render('addData');
 	});
 	app.get('/getChain', function (req, res) {
 		
