@@ -4,16 +4,7 @@
   <% include ./partials/head %>
 </head>
 <body>
-  <nav class="teal lighten-1" role="navigation">
-    <div class="nav-wrapper container"><a id="logo-container" href="/" class="brand-logo"><i class="large material-icons">merge_type</i>CertChain</a>
-      <ul class="right hide-on-med-and-down">
-        <li><a href="/getChain"><i class="material-icons left">grain</i>Blockchain</a></li>
-        <li><a href="/addNode"><i class="material-icons left">person_add</i>AddNode</a></li>
-        <li><a href="/addData"><i class="material-icons left">note_add</i>AddData</a></li>
-        <li><a href="#"><i class="material-icons left">local_library</i>Documentation</a></li>
-      </ul>
-    </div>
-  </nav>
+  <% include ./partials/header %>
   <div class="section no-pad-bot" id="index-banner">
     <div class="container">
       <br><br>
@@ -65,47 +56,6 @@
     <br><br>
   </div>
 
-  <footer class="page-footer teal">
-    <div class="container">
-      <div class="row">
-        <div class="col l6 s12">
-          <h5 class="white-text">About us</h5>
-          <p class="grey-text text-lighten-4">This is our B.Tech final year project which was created to solve a real world problem to reduce the hasle in certiicate distribution by providing a unified platform.</p>
-
-
-        </div>
-        <div class="col l3 s12">
-          <h5 class="white-text">Tech Stack</h5>
-          <ul>
-            <li><a class="white-text" href="#!">Node.js</a></li>
-            <li><a class="white-text" href="#!">MongoDB</a></li>
-            <li><a class="white-text" href="#!">MaterilizeCSS</a></li>
-            <li><a class="white-text" href="#!">Socket.io</a></li>
-          </ul>
-        </div>
-        <div class="col l3 s12">
-          <h5 class="white-text">Team</h5>
-          <ul>
-            <li><a class="white-text" href="#!">Naveen Raju</a></li>
-            <li><a class="white-text" href="#!">Hema Latha</a></li>
-            <li><a class="white-text" href="#!">Chinni Krishna</a></li>
-            <li><a class="white-text" href="#!">Nookesh</a></li>
-          </ul>
-        </div>
-      </div>
-    </div>
-    <div class="footer-copyright">
-      <div class="container">
-      Coded by <a class="white-text text-lighten-3" href="#">Naveen Raju</a>
-      </div>
-    </div>
-  </footer>
-
-
-  <!--  Scripts-->
-  <script src="https://code.jquery.com/jquery-2.1.1.min.js"></script>
-  <script src="/js/materialize.js"></script>
-  <script src="/js/init.js"></script>
-
+  <% include ./partials/footer %>
   </body>
 </html>

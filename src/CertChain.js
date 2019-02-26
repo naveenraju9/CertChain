@@ -7,14 +7,67 @@ const CertChain = function() {
 
 	function init(){
 		genesisBlock = { 
-            index: 0
+        index: 0
 		  , timestamp: 1511818270000
-		  , data: 'our genesis data'
+		  , data: [
+			{	
+				certificateID:0,
+				name: 'naveen',
+				dob: '27-10-1998',
+				dateOfIssue: '10-04-2019',
+				marks:[
+					{loudComputing: 80},
+					{managementScience: 80},
+					{humanComputerInteraction:80},
+					{distributedSystems:80}
+				],
+				previousHash: 'thisisademohashforgenesisblock'
+			},
+			{
+				certificateID:1,
+				name: 'hemalatha',
+				dob: '27-10-1998',
+				dateOfIssue: '10-04-2019',
+				marks:[
+					{loudComputing: 80},
+					{managementScience: 80},
+					{humanComputerInteraction:80},
+					{distributedSystems:80}
+				]
+			},
+			{
+				certificateID:2,
+				name: 'nookesh',
+				dob: '27-10-1998',
+				dateOfIssue: '10-04-2019',
+				marks:[
+					{loudComputing: 80},
+					{managementScience: 80},
+					{humanComputerInteraction:80},
+					{distributedSystems:80}
+				]
+			},
+			{
+				certificateID:3,
+				name: 'chinnikrishna',
+				dob: '27-10-1998',
+				dateOfIssue: '10-04-2019',
+				marks:[
+					{loudComputing: 80},
+					{managementScience: 80},
+					{humanComputerInteraction:80},
+					{distributedSystems:80}
+				]
+			}]
 		  , previousHash: "-1"
 		  , nonce: 0
 		};
 
 		genesisBlock.hash = createHash(genesisBlock);
+		for(var i=1;i<genesisBlock.data.length;i++){
+			genesisBlock.data[i].hash = Crypto.createHash('SHA256').update(genesisBlock.data[i].name+genesisBlock.data[i].dob+genesisBlock.data[i].certificateID+genesisBlock.data[i].dateOfIssue+genesisBlock.data[i].marks).digest('hex');
+			genesisBlock.data[i].previousHash = genesisBlock.data[i-1].hash;
+		}
 		chain.push(genesisBlock);
 		currentBlock = genesisBlock; 
 	}
@@ -28,6 +81,7 @@ const CertChain = function() {
 		if(checkNewBlockIsValid(block, currentBlock)){
 			chain.push(block);
 			currentBlock = block; 
+			console.log(JSON.stringify(chain,null, '\t'));
 			return true;
 		}
 		
@@ -52,7 +106,7 @@ const CertChain = function() {
 
 		while(true){
 			block.hash = createHash(block);
-			if(block.hash.slice(-3) === "000"){	
+			if(block.hash.slice(-4) === "0000"){	
 				return block;
 			}else{
 				block.nonce++;

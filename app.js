@@ -1,6 +1,6 @@
 const express = require('express');
 const bodyParser = require('body-parser');
-const CertNode = require('./CertNode'); 
+const CertNode = require('./src/CertNode'); 
 const path = require('path');
 const port = 18070+Math.floor(Math.random()*30);
 console.log('starting node on ', port)

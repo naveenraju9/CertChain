@@ -8,6 +8,7 @@ let BlockchainSchema = new Schema({
     data: [{
         name: {type:String},
         Dob: {type:String},
+        dateOfIssue: {type:String},
         marks: [{
             subject: {type: String},
             marks: {type: Number}
