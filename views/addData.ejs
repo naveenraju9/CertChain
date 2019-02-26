@@ -9,29 +9,25 @@
   <% include ./partials/header %>
 
   <div class="container">
-    <% include ./partials/certificate %>
-    <div class="center-align">
-      <a class="waves-effect waves-light btn-large"><i class="material-icons right">person_add</i>Add Another Certificate</a>
-      <br><br>
+    <br><br>
+    <h4>Please select how many certificates you want to enter:</h4>
+    <br>
+    <div>
+      <p class="range-field">
+        <input type="range" id="test5" min="0" max="10" name="noOfCerts" />
+        <div class="center-align">
+          <button class="btn waves-effect waves-light btn-large" type="submit" name="action" id="loadForms">
+            Get Forms
+            <i class="material-icons right">person_add</i>
+          </button>
+        </div>
+      </p>
     </div>
   </div>
 
 
   <% include ./partials/footer %>
-  <script>
-    $(document).ready(function () {
-      $('.datepicker').datepicker();
-    });
-    var i = 0;
-    $("#addSub").on('click', function () {
-      var data = "<tr><td><input placeholder='Enter Subject' id='subjects" + i + "'type='text' name=subjects[] class='validate'></td><td><input placeholder='Enter Marks' id='marks" + i + "' type='text' name=marks[] class='validate'></td></tr>";
-      $('table').append(data);
-      i++;
-      if (i == 10) {
-        $('#addSub').attr('disabled', true);
-      }
-    });
-  </script>
+  <% include ./partials/addDataScripts %>
 </body>
 
 </html>

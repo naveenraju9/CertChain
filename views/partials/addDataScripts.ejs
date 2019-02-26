@@ -1,0 +1,22 @@
+<script>
+    $(document).ready(function () {
+        $('.datepicker').datepicker();
+    });
+    var i = 0;
+    $("#addSub").on('click', function () {
+        var data = "<tr><td><input placeholder='Enter Subject' id='subjects" + i + "'type='text' name=subjects[] class='validate'></td><td><input placeholder='Enter Marks' id='marks" + i + "' type='text' name=marks[] class='validate'></td></tr>";
+        $('table').append(data);
+        i++;
+
+        if (i == 10) {
+            $('#addSub').attr('disabled', true);
+        }
+    });
+    $('#loadForms').on('click', function () {
+        var noOfforms = $('input[name=noOfCerts]').val();
+        console.log(noOfforms);
+        for(var i=1; i<=noOfforms; i++){
+         $('.container').append("<% include ./certificate %>");
+        }
+    });
+</script>
