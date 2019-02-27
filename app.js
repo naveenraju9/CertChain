@@ -7,8 +7,8 @@ console.log('starting node on ', port)
 let node1 = new CertNode(port);
 
 node1.init();
-
-const http_port = 3000+Math.floor(Math.random()*10);
+//+Math.floor(Math.random()*10)
+const http_port = 3000;
 
 let BrewHTTP = function (){
 	const app = new express();
@@ -32,10 +32,9 @@ let BrewHTTP = function (){
 	app.get('/addData', function(req, res) {
 		res.render('addData');
 	});
-	app.get('/addData/:data', (req, res)=>{
-		let newBlock = node1.createBlock(req.params.data);
-		console.log('block created');
-		res.send();
+	app.post('/addData', function(req, res) {
+		//let CertBlock = hasher(req.body);
+		let newBlock = node1.createBlock(req.body);
 	});
 
 	app.get('/getChain', function (req, res) {

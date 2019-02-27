@@ -93,21 +93,54 @@ const CertChain = function() {
 		return false;
 	}
 
-	function createBlock(data){
+	function createBlock(certificatesData){
 		let newBlock = {
-			index: currentBlock.index+1
+			  index: currentBlock.index+1
 			, timestamp: new Date().getTime()
-		  , data: data
+			, data: certificatesData
 		  , index: currentBlock.index+1
 		  , previousHash: currentBlock.hash
 		  , nonce: 0
 		};
 
+		//newBlock.data = datahandler(certificatesData);
+		//console.log(certificatesData.subjects[0][0]);
 		newBlock = proofOfWork(newBlock);
-
+	
 		return newBlock;
 	}
-
+	//cenverting block to necessary format
+function datahandler(response){
+	var modifiedData = [];
+	var certObject ={};
+	var data = response;
+	for(var k=0; k<data.name.length; k++){
+		var certLength = data.name.length;
+		certObject.certificateID = k;
+		certObject.name = data.name[k];
+		certObject.dob = data.dateofbirth[k];
+		certObject.PIN = data.pin[k];
+		certObject.dateOfIssue = data.doi[k];
+		certObject.marks = [];
+		for(var j=0;j<5;j++){
+			var markObject = {};
+			var f = 0;
+			if(f<certLength){
+			markObject
+			.data.subjects[j][f] = data.marks[j][f];
+			certObject.marks.push(markObject);
+			}
+			f++;
+		}
+		
+		modifiedData[k].push({
+			certObject
+		}
+		);
+		
+	}
+	return modifiedData;
+}
 	function proofOfWork(block){
 
 		while(true){
