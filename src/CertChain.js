@@ -22,8 +22,6 @@ const CertChain = function() {
 					{humanComputerInteraction:80},
 					{distributedSystems:80}
 				],
-				hash: 'thisisademohashforgenesisblock',
-				previousHash: -1
 			},
 			{
 				certificateID:1,
@@ -64,14 +62,12 @@ const CertChain = function() {
 					{distributedSystems:80}
 				]
 			}]
-		  , previousHash: "-1"
 		  , nonce: 0
 		};
 
 		genesisBlock.hash = createHash(genesisBlock);
-		for(var i=1;i<genesisBlock.data.length;i++){
+		for(var i=0;i<genesisBlock.data.length;i++){
 			genesisBlock.data[i].hash = Crypto.createHash('SHA256').update(genesisBlock.data[i].name+genesisBlock.data[i].dob+genesisBlock.data[i].certificateID+genesisBlock.data[i].dateOfIssue+genesisBlock.data[i].PIN+genesisBlock.data[i].marks).digest('hex');
-			genesisBlock.data[i].previousHash = genesisBlock.data[i-1].hash;
 		}
 		chain.push(genesisBlock);
 		currentBlock = genesisBlock; 
@@ -86,61 +82,61 @@ const CertChain = function() {
 		if(checkNewBlockIsValid(block, currentBlock)){
 			chain.push(block);
 			currentBlock = block; 
-			console.log(JSON.stringify(chain,null, '\t'));
 			return true;
 		}
 		
 		return false;
 	}
 
+
 	function createBlock(certificatesData){
 		let newBlock = {
 			  index: currentBlock.index+1
 			, timestamp: new Date().getTime()
-			, data: certificatesData
-		  , index: currentBlock.index+1
+			, index: currentBlock.index+1
 		  , previousHash: currentBlock.hash
 		  , nonce: 0
 		};
 
-		//newBlock.data = datahandler(certificatesData);
-		//console.log(certificatesData.subjects[0][0]);
+		newBlock.data = datahandler(certificatesData);
+		//console.log(certificatesData);
 		newBlock = proofOfWork(newBlock);
-	
 		return newBlock;
 	}
 	//cenverting block to necessary format
-function datahandler(response){
+function datahandler(data){
 	var modifiedData = [];
-	var certObject ={};
-	var data = response;
+
+	//formulating a individual certificate
 	for(var k=0; k<data.name.length; k++){
-		var certLength = data.name.length;
-		certObject.certificateID = k;
-		certObject.name = data.name[k];
-		certObject.dob = data.dateofbirth[k];
-		certObject.PIN = data.pin[k];
-		certObject.dateOfIssue = data.doi[k];
-		certObject.marks = [];
-		for(var j=0;j<5;j++){
-			var markObject = {};
-			var f = 0;
-			if(f<certLength){
-			markObject
-			.data.subjects[j][f] = data.marks[j][f];
-			certObject.marks.push(markObject);
-			}
-			f++;
-		}
-		
-		modifiedData[k].push({
-			certObject
-		}
-		);
-		
+
+					var certObject = {};
+					certObject.certificateID = k;
+					certObject.name = data.name[k];
+					certObject.dob = data.dateofbirth[k];
+					certObject.PIN = data.pin[k];
+					certObject.dateOfIssue = data.doi[k];
+					certObject.marks = [];
+
+					//pushing subjects and marks to a single certificate
+					for(var j=0;j<5;j++){
+						var markObject = {};
+						var sub = data.subjects[j][k];
+						markObject.sub = data.marks[j][k];
+						certObject.marks.push(markObject);
+					}
+					//creating a hash for each certificate
+					certObject.hash = Crypto.createHash('SHA256').update(certObject.certificateID+certObject.name+certObject.dob+certObject.PIN+certObject.dateOfIssue+certObject.marks).digest('hex');
+					//pushing a single certificate
+					modifiedData[k] = certObject;
+
 	}
 	return modifiedData;
 }
+
+
+
+
 	function proofOfWork(block){
 
 		while(true){
