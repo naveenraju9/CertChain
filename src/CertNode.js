@@ -4,7 +4,7 @@ const WebSocket = require('ws');
 const CertNode = function(port){
     let certSockets = [];
     let brewServer;
-    let _port = port
+    let _port = port;
     let chain = new CertChain();
 
     const REQUEST_CHAIN = "REQUEST_CHAIN";

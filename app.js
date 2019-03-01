@@ -1,13 +1,14 @@
 const express = require('express');
 const bodyParser = require('body-parser');
 const CertNode = require('./src/CertNode'); 
-const path = require('path');
+//const path = require('path');
+//const mongoose = require('mongoose');
 const port = 18070+Math.floor(Math.random()*30);
 console.log('starting node on ', port)
 let node1 = new CertNode(port);
-
 node1.init();
-//
+
+
 const http_port = 3000+Math.floor(Math.random()*10);
 
 let BrewHTTP = function (){
@@ -28,6 +29,7 @@ let BrewHTTP = function (){
 		var nodePort = req.body.port;
 		console.log('add host: '+nodePort)
 		node1.addPeer('localhost', nodePort);
+		res.render('successNode');
 	});
 	app.get('/addData', function(req, res) {
 		res.render('addData');
@@ -35,15 +37,19 @@ let BrewHTTP = function (){
 	app.post('/addData', function(req, res) {
 		let newBlock = node1.createBlock(req.body);
 		console.log('block created');
+		res.render('successData');
 	});
 
 	app.get('/getChain', function (req, res) {
 		res.send(node1.chain);
+
 	});
 
 	
 	app.listen(http_port, () => {
+
 		console.log(`http server up.. ${http_port}`);
+
 	})
 }
 

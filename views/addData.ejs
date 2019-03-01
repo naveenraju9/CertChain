@@ -25,6 +25,7 @@
           </div>
         </p>
       </div>
+      <br><br>
       <form class='col s12' id='addToForm' method="POST" action="/addData">
 
       </form>
@@ -36,6 +37,9 @@
   <script>
     $(document).ready(function () {
       $('.datepicker').datepicker();
+    });
+    $('#submitBtn').on('click',function(){
+      M.toast({html: 'Bingo! data Added Successfully!'}, 5000);
     });
   </script>
 </body>

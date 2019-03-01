@@ -1,10 +1,10 @@
 const Crypto = require('crypto');
-
+const mongoose = require('mongoose');
+//mongoose.connect('mongodb://localhost/test');
 const CertChain = function() {
 	let chain = [];
 	let currentBlock = {};
 	let genesisBlock = {};
-
 	function init(){
 		genesisBlock = { 
         index: 0
@@ -69,6 +69,7 @@ const CertChain = function() {
 		for(var i=0;i<genesisBlock.data.length;i++){
 			genesisBlock.data[i].hash = Crypto.createHash('SHA256').update(genesisBlock.data[i].name+genesisBlock.data[i].dob+genesisBlock.data[i].certificateID+genesisBlock.data[i].dateOfIssue+genesisBlock.data[i].PIN+genesisBlock.data[i].marks).digest('hex');
 		}
+		
 		chain.push(genesisBlock);
 		currentBlock = genesisBlock; 
 	}
