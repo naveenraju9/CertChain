@@ -40,11 +40,13 @@ let BrewHTTP = function (){
 		res.render('successData');
 	});
 
-	app.get('/getChain', function (req, res) {
-		res.send(node1.chain);
+	app.get('/explore', function (req, res) {
+		res.render('explore');
 
 	});
-
+	app.post('/explore', function (req, res) {
+		//Implementing search functionality
+	});
 	
 	app.listen(http_port, () => {
 

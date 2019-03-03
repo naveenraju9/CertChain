@@ -83,6 +83,7 @@ const CertChain = function() {
 		if(checkNewBlockIsValid(block, currentBlock)){
 			chain.push(block);
 			currentBlock = block; 
+			console.log(JSON.stringify(chain,null,2));
 			return true;
 		}
 		
