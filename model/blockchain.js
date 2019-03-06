@@ -1,9 +1,7 @@
 const mongoose = require('mongoose');
-const Schema = mongoose.Schema();
-
-
+const Schema = mongoose.Schema;
 //Schema for the block
-let BlockchainSchema = mongoose.Schema({
+let BlockchainSchema = new Schema({
     timestamp: {type:Number, required:true},
     data: [{
         name: {type:String},
@@ -21,6 +19,5 @@ let BlockchainSchema = mongoose.Schema({
     nounce: {type:Number},
     Hash: {type:String}
 });
-var BlockchainDataBase = mongoose.model('blockchain', BlockchainSchema);
 
-module.exports = BlockchainDataBase;
+module.exports = mongoose.model('blockchain', BlockchainSchema);

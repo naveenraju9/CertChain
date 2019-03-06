@@ -1,6 +1,6 @@
 const Crypto = require('crypto');
 const mongoose = require('mongoose');
-const  blockchainModel= mongoose.model('blockchain'); 
+//const blockchainModel= mongoose.model('blockchain'); 
 
 const CertChain = function() {
 	let chain = [];
@@ -87,7 +87,7 @@ const CertChain = function() {
 			console.log(JSON.stringify(chain,null,2));
 			return true;
 		}
-		
+
 		return false;
 	}
 
