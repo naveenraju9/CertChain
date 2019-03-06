@@ -40,7 +40,6 @@ const CertNode = function(port){
                 case CHAIN:
                     processedRecievedChain(msg.message);
                     break;  
-
                 default:  
                     console.log('Unknown message ');
             }
@@ -110,7 +109,6 @@ const CertNode = function(port){
     const createBlock = (teammember) => {
         let newBlock = chain.createBlock(teammember)
         chain.addToChain(newBlock);
-
 		broadcastMessage(BLOCK, newBlock);
 
     }

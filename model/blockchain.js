@@ -3,7 +3,7 @@ const Schema = mongoose.Schema();
 
 
 //Schema for the block
-let BlockchainSchema = new Schema({
+let BlockchainSchema = mongoose.Schema({
     timestamp: {type:Number, required:true},
     data: [{
         name: {type:String},

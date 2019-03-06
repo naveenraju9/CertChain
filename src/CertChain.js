@@ -1,6 +1,7 @@
 const Crypto = require('crypto');
 const mongoose = require('mongoose');
-//mongoose.connect('mongodb://localhost/test');
+const  blockchainModel= mongoose.model('blockchain'); 
+
 const CertChain = function() {
 	let chain = [];
 	let currentBlock = {};

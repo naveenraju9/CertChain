@@ -1,13 +1,15 @@
 const express = require('express');
 const bodyParser = require('body-parser');
 const CertNode = require('./src/CertNode'); 
-//const path = require('path');
-//const mongoose = require('mongoose');
+const path = require('path');
+const mongoose = require('mongoose');
 const port = 18070+Math.floor(Math.random()*30);
 console.log('starting node on ', port)
 let node1 = new CertNode(port);
 node1.init();
-
+mongoose.connect('mongodb://localhost/certchain', {useNewUrlParser: true})
+				.then(()=> console.log("MongoDB connected"))
+				.catch(err => console.log(err));
 
 const http_port = 3000+Math.floor(Math.random()*10);
 
@@ -42,7 +44,6 @@ let BrewHTTP = function (){
 
 	app.get('/explore', function (req, res) {
 		res.render('explore');
-
 	});
 	app.post('/explore', function (req, res) {
 		//Implementing search functionality
