@@ -3,7 +3,9 @@ const bodyParser = require('body-parser');
 const CertNode = require('./src/CertNode'); 
 const path = require('path');
 const mongoose = require('mongoose');
-const port = 18070+Math.floor(Math.random()*30);
+
+//const port = 18070+Math.floor(Math.random()*30);
+const port = 18070;
 console.log('starting node on ', port)
 let node1 = new CertNode(port);
 node1.init();
@@ -12,8 +14,8 @@ node1.init();
 				.then(()=> console.log("MongoDB connected"))
 				.catch(err => console.log(err));
 */
-const http_port = 3000+Math.floor(Math.random()*10);
-
+//const http_port = 3000+Math.floor(Math.random()*10);
+const http_port = 300;
 let BrewHTTP = function (){
 	const app = new express();
 	app.use(express.static( './public'));
