@@ -30,8 +30,9 @@ let BrewHTTP = function (){
 	});
 	app.post('/addNode', (req, res)=>{
 		var nodePort = req.body.port;
-		console.log('add host: '+nodePort)
-		node1.addPeer('localhost', nodePort);
+		var nodeHost = req.body.host;
+		console.log('added host '+nodeHost+":"+nodePort);
+		node1.addPeer(nodeHost, nodePort);
 		res.render('successNode');
 	});
 	app.get('/addData', function(req, res) {
