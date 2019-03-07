@@ -15,7 +15,7 @@ node1.init();
 				.catch(err => console.log(err));
 */
 //const http_port = 3000+Math.floor(Math.random()*10);
-const http_port = 300;
+const http_port = 80;
 let BrewHTTP = function (){
 	const app = new express();
 	app.use(express.static( './public'));
