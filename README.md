@@ -1,5 +1,4 @@
 # CertChain
-NodeJS Blockchain implementation 
+NodeJS Blockchain implementation
 
-This is a rough working example, contains a CertNode, a CertChain and an HTTP server
-
+A purely transparent tamper proof distribution of digital certificates powered by blockchain technology by the educational organizations to the students that would ease both the process of verification and distribution. In this, we give uniqueness to every certificate by giving a hash value which was generated based on the global timestamp, previous block’s hash and significantly the data present in the current block to each and every certificate that was issued by the educational institution. This hash value can be used to check in the blockchain for the validation of the certificate, also this can be used at wide domain areas like for applying jobs in public sector companies and in institutions, college admissions and even for KYC rather than uploading the entire document every time this would save a huge amount of storage space for the Government organizations and also easies the background checking process. Every high level and low level organizations run the separate node that consists of entire blockchain and can add new block of data which was broadcasting into the entire network and was added into blockchain based on the proof-of-concept. The CPU power was contributed by every organization in the network such as educational and government institutions.
