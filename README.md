@@ -1,4 +1,16 @@
 # CertChain
-NodeJS Blockchain implementation
+<h1>A 21st Century digital certificate distribution platform using blockchain</h1>
 
-A purely transparent tamper proof distribution of digital certificates powered by blockchain technology by the educational organizations to the students that would ease both the process of verification and distribution. In this, we give uniqueness to every certificate by giving a hash value which was generated based on the global timestamp, previous block’s hash and significantly the data present in the current block to each and every certificate that was issued by the educational institution. This hash value can be used to check in the blockchain for the validation of the certificate, also this can be used at wide domain areas like for applying jobs in public sector companies and in institutions, college admissions and even for KYC rather than uploading the entire document every time this would save a huge amount of storage space for the Government organizations and also easies the background checking process. Every high level and low level organizations run the separate node that consists of entire blockchain and can add new block of data which was broadcasting into the entire network and was added into blockchain based on the proof-of-concept. The CPU power was contributed by every organization in the network such as educational and government institutions.
+A purely transparent tamper proof distribution of digital certificates powered by blockchain technology by the educational organizations to the students that would ease both the process of verification and distribution. 
+In this every certificate has a hash value which is used to validate the certificate in the blockchain network. 
+
+Tech Stack:
+Entire Application is built in MVC design pattern and the folders are organized in that fashion.
+<ul>
+  <li>Node.js - Entire appilication logic is written in this language.</li>
+  <li>MongoDB - A NoSQL database which was used for storage of blockchain.</li>
+  <li>ejs -  Used as a templating engine in which the redering was done in server side.</li>
+<li>MaterializeCSS - Entire Fronend is built with this framework.</li>
+</ul>
+
+
